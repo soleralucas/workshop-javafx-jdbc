@@ -55,6 +55,8 @@ public class DepartmentListController implements Initializable {
 
 
 	private void initializeNodes() {
+		
+		//define onde cada coluna vai pegar o valor dentro do objeto derpartment
 		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
 		
