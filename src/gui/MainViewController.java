@@ -36,7 +36,7 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemDepartmentAction() {
-		System.out.println("onMenuItemDepartmentAction");
+		loadView("/gui/DepartmentList.fxml");
 		
 	}
 	
@@ -52,7 +52,8 @@ public class MainViewController implements Initializable {
 		
 	}
 	
-	private void loadView(String absoluteName) {
+	//garante que o processamento não sera interrompido durante o multhread
+	private  synchronized void loadView(String absoluteName) {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
