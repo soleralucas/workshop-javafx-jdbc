@@ -8,30 +8,33 @@ Aplicação desktop desenvolvida utilizando JavaFX durante a realização de um 
 
 O sistema permite o gerenciamento de **departamentos** e **vendedores**, possibilitando cadastrar, editar, consultar e remover registros por meio de uma interface gráfica. Além disso, cada vendedor pode ser associado a um departamento, representando o relacionamento entre as entidades.
 
-Durante o desenvolvimento foram aplicados conceitos de orientação a objetos, JavaFX, JDBC e tratamento de exceções. O sistema também possui validações de formulário e tratamento de exceções de integridade, impedindo operações que possam comprometer a consistência dos dados.
+Durante o desenvolvimento foram aplicados conceitos de orientação a objetos, JavaFX, JDBC e tratamento de exceções. O sistema também possui validações de formulário e tratamento de exceções de integridade, impedindo as operações que possam comprometer a consistência dos dados.
 
-A interface foi construída utilizando FXML e CSS, proporcionando uma navegação mais organizada e uma melhor experiência de utilização.
+A interface foi construída utilizando FXML e CSS, permitindo uma navegação mais organizada e uma melhor experiência de utilização.
 
 ## Modelo conceitual
-![Modelo Conceitual](LINK_MODELO_CONCEITUAL)
+![Modelo Conceitual](https://github.com/soleralucas/assets/blob/main/demo-dao-jdbc/Captura%20de%20tela%202026-06-01%20174535.png)
+![Modelo Conceitual](https://github.com/soleralucas/assets/blob/main/demo-dao-jdbc/Captura%20de%20tela%202026-06-01%20174555.png)
 
 ## Imagens da aplicação
 
 ### Lista de vendedores
 
-![Lista de Vendedores](LINK_LISTA_SELLERS)
+![Lista de Vendedores](https://github.com/soleralucas/assets/blob/main/workshop-javafx-jdbc/Captura%20de%20tela%202026-06-05%20143106.png)
 
 ### Lista de departamentos
 
-![Lista de Departamentos](LINK_LISTA_DEPARTMENTS)
+![Lista de Departamentos](https://github.com/soleralucas/assets/blob/main/workshop-javafx-jdbc/Captura%20de%20tela%202026-06-05%20143146.png)
 
 ### Cadastro de vendedor
 
-![Cadastro de Vendedor](LINK_CADASTRO_SELLER)
+![Cadastro de Vendedor](https://github.com/soleralucas/assets/blob/main/workshop-javafx-jdbc/Captura%20de%20tela%202026-06-05%20143121.png)
 
 ### Edição de vendedor
 
-![Edição de Vendedor](LINK_EDICAO_SELLER)
+![Edição de Vendedor](https://github.com/soleralucas/assets/blob/main/workshop-javafx-jdbc/Captura%20de%20tela%202026-06-05%20143133.png)
+
+> **Observação:** A funcionalidade de edição utiliza a mesma tela de cadastro, com os campos previamente preenchidos com os dados do vendedor selecionado para facilitar a atualização das informações.
 
 # Tecnologias utilizadas
 
