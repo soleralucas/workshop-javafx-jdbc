@@ -2,7 +2,7 @@
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/devsuperior/sds1-wmazoni/blob/master/LICENSE) 
 
 
-## Sobre o projeto
+# Sobre o projeto
 
 Aplicação desktop desenvolvida utilizando JavaFX durante a realização de um curso de Java, com o objetivo de colocar em prática a criação de interfaces gráficas e a integração com banco de dados através de JDBC.
 
