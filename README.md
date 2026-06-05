@@ -1,37 +1,47 @@
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/devsuperior/sds1-wmazoni/blob/master/LICENSE) 
 
-# Demo DAO JDBC
 
 ## Sobre o projeto
 
-Demo DAO JDBC é uma aplicação Java desenvolvida com o objetivo de praticar o acesso a banco de dados utilizando JDBC e padrões de projeto.
+Aplicação desktop desenvolvida utilizando JavaFX durante a realização de um curso de Java, com o objetivo de colocar em prática a criação de interfaces gráficas e a integração com banco de dados através de JDBC.
 
-O sistema possui duas entidades principais: **Seller** e **Department**, onde um departamento pode possuir vários vendedores.
+O sistema permite o gerenciamento de **departamentos** e **vendedores**, possibilitando cadastrar, editar, consultar e remover registros por meio de uma interface gráfica. Além disso, cada vendedor pode ser associado a um departamento, representando o relacionamento entre as entidades.
 
-Durante o desenvolvimento foram implementadas operações de consulta, inserção, atualização e remoção de dados utilizando JDBC, aplicando o padrão **DAO (Data Access Object)** para separar a lógica de acesso aos dados das demais regras da aplicação.
+Durante o desenvolvimento foram aplicados conceitos de orientação a objetos, JavaFX, JDBC e tratamento de exceções. O sistema também possui validações de formulário e tratamento de exceções de integridade, impedindo operações que possam comprometer a consistência dos dados.
 
-Além disso, foi utilizado o padrão **Factory** para centralizar a criação e gerenciamento das conexões com o banco de dados, reduzindo o acoplamento entre as classes.
-
-O projeto também implementa tratamento de exceções de integridade referencial do banco de dados. Dessa forma, não é possível excluir um departamento que possua vendedores associados, garantindo a consistência dos dados e respeitando os relacionamentos existentes entre as entidades.
+A interface foi construída utilizando FXML e CSS, proporcionando uma navegação mais organizada e uma melhor experiência de utilização.
 
 ## Modelo conceitual
+![Modelo Conceitual](LINK_MODELO_CONCEITUAL)
 
-### Estrutura das entidades
+## Imagens da aplicação
 
-![Modelo Conceitual](https://raw.githubusercontent.com/soleralucas/assets/main/demo-dao-jdbc/Captura%20de%20tela%202026-06-01%20174535.png)
+### Lista de vendedores
 
-![Modelo Conceitual](https://raw.githubusercontent.com/soleralucas/assets/main/demo-dao-jdbc/Captura%20de%20tela%202026-06-01%20174555.png)
+![Lista de Vendedores](LINK_LISTA_SELLERS)
+
+### Lista de departamentos
+
+![Lista de Departamentos](LINK_LISTA_DEPARTMENTS)
+
+### Cadastro de vendedor
+
+![Cadastro de Vendedor](LINK_CADASTRO_SELLER)
+
+### Edição de vendedor
+
+![Edição de Vendedor](LINK_EDICAO_SELLER)
 
 # Tecnologias utilizadas
 
 ## Back end
 
-* Java 21
+* Java 26
+* JavaFX 26.0.1
 * JDBC
-* Maven
-* DAO Pattern
-* Factory Pattern
+* FXML
+* CSS
 
 ## Banco de dados
 
@@ -43,18 +53,26 @@ O projeto também implementa tratamento de exceções de integridade referencial
 
 ## Pré-requisitos
 
-* Java 21 ou superior
-* Maven
+* Java 26 ou superior (recomendado)
+* JavaFX SDK 26.0.1 ou compatível com a versão do Java utilizada
 * MySQL Server
 * MySQL Workbench
 * STS, Eclipse ou IntelliJ IDEA
 
+Download do JavaFX:
+
+```text
+https://jdk.java.net/javafx26/
+```
+
+> Caso utilize outra versão do Java, recomenda-se utilizar uma versão compatível do JavaFX SDK.
+
 ## Clonar o repositório
 
 ```bash
-git clone git@github.com:soleralucas/demo-dao-jdbc.git
+git clone git@github.com:soleralucas/workshop-javafx-jdbc.git
 
-cd demo-dao-jdbc
+cd workshop-javafx-jdbc
 ```
 
 ## Importando o projeto
@@ -63,14 +81,49 @@ cd demo-dao-jdbc
 
 1. Abra a IDE.
 2. Clique em **File → Import**.
-3. Expanda **Maven**.
-4. Selecione **Existing Maven Projects**.
-5. Clique em **Next**.
-6. Em **Root Directory**, clique em **Browse**.
-7. Selecione a pasta do projeto clonado.
-8. Clique em **Finish**.
+3. Selecione **Existing Projects into Workspace**.
+4. Clique em **Next**.
+5. Selecione a pasta do projeto clonado.
+6. Clique em **Finish**.
 
-O Maven realizará automaticamente o download das dependências necessárias, incluindo o MySQL Connector/J.
+## Configuração das bibliotecas
+
+Após importar o projeto, acesse:
+
+```text
+Project → Properties → Java Build Path → Libraries
+```
+
+Caso existam referências quebradas ou bibliotecas não carregadas corretamente, remova-as antes de continuar.
+
+### MySQL Connector/J
+
+O projeto possui o MySQL Connector/J na pasta:
+
+```text
+lib
+```
+
+Caso necessário:
+
+1. Clique em **Add JARs...** ou **Add External JARs...**
+2. Selecione o arquivo do MySQL Connector presente na pasta `lib`.
+3. Clique em **Apply and Close**.
+
+### JavaFX SDK
+
+Após baixar e extrair o JavaFX SDK:
+
+1. Clique em **Add External JARs...**
+2. Acesse a pasta:
+
+```text
+javafx-sdk-26.0.1/lib
+```
+
+3. Selecione todos os arquivos `.jar`.
+4. Clique em **Open**.
+5. Clique em **Apply and Close**.
 
 ## Configuração do banco de dados
 
@@ -132,38 +185,70 @@ useSSL=false
 
 > É necessário informar um usuário e senha válidos do MySQL instalado em sua máquina.
 
-## Executando o projeto
+## Configuração dos VM Arguments
 
-Localize os programas de teste na pasta:
+Após configurar as bibliotecas e o banco de dados, é necessário adicionar os VM Arguments na IDE utilizada para permitir a execução correta do JavaFX.
+
+No STS/Eclipse:
 
 ```text
-src/application
+Run → Run Configurations...
 ```
 
-Execute os programas através da IDE utilizando:
+Selecione a classe principal da aplicação e acesse:
+
+```text
+Arguments
+```
+
+No campo **VM Arguments**, adicione:
+
+```text
+--module-path "CAMINHO_DO_JAVAFX_SDK\lib" --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics -Dprism.order=sw
+```
+
+Exemplo:
+
+```text
+--module-path "D:\java-libs\javafx-sdk-26.0.1\lib" --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics -Dprism.order=sw
+```
+
+> Substitua `CAMINHO_DO_JAVAFX_SDK` pelo diretório onde o JavaFX SDK foi instalado em sua máquina.
+
+> Em algumas máquinas pode ser necessário utilizar o parâmetro `-Dprism.order=sw` para evitar problemas de compatibilidade gráfica durante a inicialização do JavaFX.
+
+## Executando o projeto
+
+Antes de executar a aplicação, verifique se o serviço do MySQL está em execução.
+
+No Windows:
+
+```text
+Win + R
+services.msc
+```
+
+Localize o serviço:
+
+```text
+MySQL
+```
+
+ou
+
+```text
+MySQL80
+```
+
+e confirme que ele está iniciado.
+
+Após concluir todas as configurações:
 
 ```text
 Run As → Java Application
 ```
 
-## Funcionalidades implementadas
-
-### SellerDAO
-
-* findById
-* findByDepartment
-* findAll
-* insert
-* update
-* deleteById
-
-### DepartmentDAO
-
-* findById
-* findAll
-* insert
-* update
-* deleteById
+A aplicação será iniciada e estará pronta para utilização.
 
 # Autor
 
